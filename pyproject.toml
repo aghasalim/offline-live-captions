@@ -1,0 +1,12 @@
+[project]
+name = "livecap"
+version = "0.1.0"
+description = "Offline live captions on Apple Silicon, with measured word error rate and latency"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+
+[tool.setuptools]
+packages = ["livecap"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

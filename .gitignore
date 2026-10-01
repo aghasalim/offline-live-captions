@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+data/
+*.flac
+*.wav
+*.mp3
+*.parquet
+*.tar.gz
+*.safetensors
+*.bin
+.pytest_cache/
+.DS_Store
+models/
