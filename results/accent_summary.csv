@@ -1,0 +1,25 @@
+model,accent,n,wer
+tiny,Hong Kong,16,0.4276
+tiny,India and South Asia,346,0.3518
+tiny,Malaysian,11,0.4479
+tiny,Southern African,23,0.3450
+tiny,West Indies and Bermuda,13,0.3258
+tiny,all,409,0.3558
+base,Hong Kong,16,0.3172
+base,India and South Asia,346,0.2686
+base,Malaysian,11,0.3229
+base,Southern African,23,0.3350
+base,West Indies and Bermuda,13,0.2803
+base,all,409,0.2757
+small,Hong Kong,16,0.2414
+small,India and South Asia,346,0.1727
+small,Malaysian,11,0.2292
+small,Southern African,23,0.2350
+small,West Indies and Bermuda,13,0.1591
+small,all,409,0.1795
+large-v3-turbo,Hong Kong,16,0.0897
+large-v3-turbo,India and South Asia,346,0.1287
+large-v3-turbo,Malaysian,11,0.1042
+large-v3-turbo,Southern African,23,0.2250
+large-v3-turbo,West Indies and Bermuda,13,0.1288
+large-v3-turbo,all,409,0.1316

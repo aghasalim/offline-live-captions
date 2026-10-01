@@ -89,14 +89,14 @@ def claims():
     lat = load_latency()
     a = load_accent()
     out = [
-        (r"small[^.]*?clean[^.]*?\*\*([\d.]+%)\*\*", pct(w[("small", "clean")]["wer"])),
-        (r"small[^.]*?5 dB[^.]*?\*\*([\d.]+%)\*\*", pct(w[("small", "room_snr5")]["wer"])),
-        (r"tiny[^.]*?clean[^.]*?\*\*([\d.]+%)\*\*", pct(w[("tiny", "clean")]["wer"])),
-        (r"large-v3-turbo[^.]*?clean[^.]*?\*\*([\d.]+%)\*\*", pct(w[("large-v3-turbo", "clean")]["wer"])),
-        (r"small[^.]*?median latency[^.]*?\*\*([\d.]+) s\*\*", f"{np.median(lat[('small', 4.0)]):.2f}"),
-        (r"large-v3-turbo[^.]*?median latency[^.]*?\*\*([\d.]+) s\*\*", f"{np.median(lat[('large-v3-turbo', 4.0)]):.2f}"),
-        (r"small[^.]*?RTF[^.]*?\*\*([\d.]+)\*\*", f"{float(w[('small', 'clean')]['rtf']):.3f}"),
-        (r"India and South Asia[^.]*?small[^.]*?\*\*([\d.]+%)\*\*", pct(a["India and South Asia"]["small"]["wer"])),
+        (r"the small model gets\s+\*\*([\d.]+%)\*\*", pct(w[("small", "clean")]["wer"])),
+        (r"large-v3-turbo gets \*\*([\d.]+%)\*\*", pct(w[("large-v3-turbo", "clean")]["wer"])),
+        (r"tiny gets\s+\*\*([\d.]+%)\*\*", pct(w[("tiny", "clean")]["wer"])),
+        (r"5 dB the small model\s+is at \*\*([\d.]+%)\*\*", pct(w[("small", "room_snr5")]["wer"])),
+        (r"small runs at \*\*([\d.]+)\*\*", f"{float(w[('small', 'clean')]['rtf']):.3f}"),
+        (r"the small model shows[^*]*\*\*([\d.]+) s\*\*", f"{np.median(lat[('small', 4.0)]):.2f}"),
+        (r"large-v3-turbo a median latency of \*\*([\d.]+) s\*\*", f"{np.median(lat[('large-v3-turbo', 4.0)]):.2f}"),
+        (r"India and South Asia[^*]*\*\*([\d.]+%)\*\*", pct(a["India and South Asia"]["small"]["wer"])),
     ]
     return out
 
