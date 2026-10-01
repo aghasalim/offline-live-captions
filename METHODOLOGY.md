@@ -38,8 +38,7 @@ There is no real café recording here. The "room" condition is built in
 
 1. Convolve with a synthetic room impulse response: a unit direct path, then
    after 8 ms an exponentially decaying Gaussian noise tail with RT60 = 0.5 s,
-   at equal energy to the direct path. This is a textbook late-reverb model,
-   not a measured room.
+   at equal energy to the direct path. This is a textbook late-reverb model.
 2. Add babble: six other test-other speakers not in the subset, loudness
    matched, summed, randomly offset. The babble is scaled to a fixed
    signal to noise ratio of 10 dB or 5 dB against the reverberated speech.
@@ -93,7 +92,7 @@ why RTF is reported alongside.
 Median and 90th percentile over the 60 utterances are reported. A longer
 maximum chunk means the final chunk is on average longer, so the ASR step
 takes longer; shorter chunks give the model less context and can split
-words. The default of 4 s in the live tool is a compromise, not an optimum.
+words. The default of 4 s in the live tool is a compromise.
 
 ## What was not done
 

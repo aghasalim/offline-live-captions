@@ -36,7 +36,7 @@ The room is simulated, not recorded; see METHODOLOGY.md for exactly how.
 WER on 300 LibriSpeech test-other utterances. RTF is processing time divided by audio duration on the M4.
 <!-- /table -->
 
-Read the table this way. On clean read speech the small model gets
+On clean read speech the small model gets
 **9.2%** of words wrong and large-v3-turbo gets **5.1%**; tiny gets
 **17.2%**, which is already enough that a sentence will often contain a
 wrong word. Once you add reverb and competing talkers at 5 dB the small model
@@ -144,7 +144,7 @@ server and a real transcription through the model. It passes. Model weights
 are read from `models/` on disk; `HF_HUB_OFFLINE=1` is set so the Hugging
 Face library cannot phone home either. The web page is a single file served
 on 127.0.0.1 with no external assets. If you do not trust any of that,
-unplug the network and run it; that is the point.
+unplug the network and run it.
 
 ## Layout
 
