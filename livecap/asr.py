@@ -40,7 +40,8 @@ def _mlx(model):
 
     def run(audio):
         r = mlx_whisper.transcribe(audio, path_or_hf_repo=repo, language="en",
-                                   fp16=True, condition_on_previous_text=False)
+                                   fp16=True, condition_on_previous_text=False,
+                                   temperature=0.0)  # greedy, no temperature fallback retries
         return r["text"].strip()
     run.name = f"mlx:{model}"
     return run

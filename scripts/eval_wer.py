@@ -16,7 +16,7 @@ from livecap.simulate import babble, far_field, synthetic_rir
 from livecap.text import wer
 
 ROOT = Path(__file__).resolve().parents[1]
-CONDITIONS = {"clean": None, "room_snr10": 10, "room_snr5": 5}
+CONDITIONS = {"clean": None, "room_snr15": 15, "room_snr10": 10, "room_snr5": 5}
 
 
 def read16k(path):

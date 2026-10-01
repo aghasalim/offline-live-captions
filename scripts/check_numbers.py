@@ -15,7 +15,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 R = ROOT / "results"
 MODELS = ["tiny", "base", "small", "large-v3-turbo"]
-COND = {"clean": "clean", "room_snr10": "room, babble 10 dB", "room_snr5": "room, babble 5 dB"}
+COND = {"clean": "clean", "room_snr15": "room, babble 15 dB", "room_snr10": "room, babble 10 dB", "room_snr5": "room, babble 5 dB"}
 
 
 def load_wer():

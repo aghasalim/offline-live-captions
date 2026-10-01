@@ -12,3 +12,4 @@ data/
 .pytest_cache/
 .DS_Store
 models/
+livecap.egg-info/

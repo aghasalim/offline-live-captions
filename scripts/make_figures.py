@@ -10,7 +10,7 @@ import numpy as np
 
 R = Path(__file__).resolve().parents[1] / "results"
 MODELS = ["tiny", "base", "small", "large-v3-turbo"]
-COND = {"clean": "clean", "room_snr10": "simulated room, babble 10 dB", "room_snr5": "simulated room, babble 5 dB"}
+COND = {"clean": "clean", "room_snr15": "room, 15 dB", "room_snr10": "room, 10 dB", "room_snr5": "room, 5 dB"}
 
 w = {(r["model"], r["condition"]): r for r in csv.DictReader((R / "wer_summary.csv").open())}
 models = [m for m in MODELS if (m, "clean") in w]
@@ -18,7 +18,7 @@ x = np.arange(len(models))
 
 fig, ax = plt.subplots(figsize=(7, 4))
 for i, (c, label) in enumerate(COND.items()):
-    ax.bar(x + (i - 1) * 0.26, [100 * float(w[(m, c)]["wer"]) for m in models], 0.26, label=label)
+    ax.bar(x + (i - 1.5) * 0.2, [100 * float(w[(m, c)]["wer"]) for m in models], 0.2, label=label)
 ax.set_xticks(x, models)
 ax.set_ylabel("word error rate (%)")
 ax.set_title("WER on 300 LibriSpeech test-other utterances")

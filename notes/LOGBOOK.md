@@ -32,3 +32,16 @@ normaliser maps "it's" to "its". Kept that and documented it.
 
 Another job (a local LLM benchmark) was running on this machine while I set
 things up. Timing runs are done after it finished; see entries below.
+
+Failure: the first full WER run was far slower than the smoke test
+suggested. In the 5 dB room condition tiny was at RTF 0.75 instead of 0.03.
+Cause: mlx-whisper's default temperature fallback. When the compression
+ratio check fails on a hallucinated repeat, it re-decodes at five higher
+temperatures. On noisy audio that happens constantly. Set `temperature=0.0`
+in `livecap/asr.py` so decoding is purely greedy with no retries; the live
+tool uses the same setting, so the evaluation measures what the user gets.
+RTF in that condition dropped to 0.03. Restarted the grid.
+
+Headless Chrome could not screenshot the live page because the SSE stream
+never closes and the load event never fires. Screenshot is of a static copy
+of the same HTML with three lines injected (`results/captions_page.png`).
