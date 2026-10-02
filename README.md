@@ -21,6 +21,8 @@ So this repo measures it.
 
 ## Results (Apple M4, 24 GB, mlx-whisper 0.4.3, greedy decoding)
 
+![word error rate per model and condition](results/wer_bars.svg)
+
 Word error rate on 300 LibriSpeech test-other utterances, clean and in a
 simulated room (synthetic reverb plus six-speaker babble at a fixed SNR).
 The room is simulated, not recorded; see METHODOLOGY.md for exactly how.
