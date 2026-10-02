@@ -5,7 +5,6 @@ import sys
 import threading
 import time
 
-import numpy as np
 
 from .asr import load
 from .chunker import SAMPLE_RATE, Chunker
