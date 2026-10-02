@@ -8,7 +8,6 @@ import csv
 import time
 from pathlib import Path
 
-import numpy as np
 import soundfile as sf
 
 from livecap.asr import load
