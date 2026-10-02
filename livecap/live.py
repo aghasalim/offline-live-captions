@@ -5,7 +5,6 @@ import sys
 import threading
 import time
 
-
 from .asr import load
 from .chunker import SAMPLE_RATE, Chunker
 
@@ -81,6 +80,8 @@ def main(argv=None):
         chunks.put(None)
     if server:
         server.close()
+    if outfile:
+        outfile.close()
     return 0
 
 
