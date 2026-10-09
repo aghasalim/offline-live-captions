@@ -65,7 +65,8 @@ def main(argv=None):
         return Panel(t, title=f"{asr.name}  chunk {args.chunk:.0f}s  lag {lag:.2f}s",
                      subtitle="ctrl-c to stop", padding=(1, 2))
 
-    threading.Thread(target=worker, daemon=True).start()
+    thread = threading.Thread(target=worker, daemon=True)
+    thread.start()
     with Live(render(lines, 0.0), console=console, refresh_per_second=8) as live:
         with sd.InputStream(samplerate=SAMPLE_RATE, channels=1, dtype="float32",
                             blocksize=1600, callback=on_audio):
@@ -78,6 +79,8 @@ def main(argv=None):
         if tail is not None:
             chunks.put((tail, time.monotonic()))
         chunks.put(None)
+        # Wait for the flushed tail to be transcribed, or the last words are lost.
+        thread.join()
     if server:
         server.close()
     if outfile:

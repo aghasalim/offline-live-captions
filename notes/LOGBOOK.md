@@ -83,3 +83,10 @@ sentence of ten words means three or four wrong.
 METHODOLOGY.md said the babble was mixed at 10 dB or 5 dB, but
 `scripts/eval_wer.py` and the README table also have a 15 dB condition.
 Added 15 dB to the sentence. No number changes.
+
+The live loop flushed the last partial chunk on Ctrl-C and queued it, but
+never waited for the worker thread, which is a daemon. So `main` returned and
+closed the transcript file while the last chunk was still being transcribed,
+and those words never reached the screen or the file. It now joins the worker
+before closing. `tests/test_live.py` fakes the microphone and a slow model to
+check that the last chunk lands in `--save`.
