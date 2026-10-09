@@ -41,7 +41,7 @@ There is no real café recording here. The "room" condition is built in
    at equal energy to the direct path. This is a textbook late-reverb model.
 2. Add babble: six other test-other speakers not in the subset, loudness
    matched, summed, randomly offset. The babble is scaled to a fixed
-   signal to noise ratio of 10 dB or 5 dB against the reverberated speech.
+   signal to noise ratio of 15, 10 or 5 dB against the reverberated speech.
 
 The RIR seed and the noise offsets are fixed per utterance index, so a rerun
 produces bit-identical audio. Everything stays at 16 kHz mono.
