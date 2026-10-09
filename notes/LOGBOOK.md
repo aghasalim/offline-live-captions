@@ -77,3 +77,9 @@ always contain a newline) and retyped the paragraph.
 Accent set: large-v3-turbo at 12.9% on India and South Asia (346 clips),
 small at 17.3%. Tiny is above 35% everywhere, which for a Common Voice
 sentence of ten words means three or four wrong.
+
+## 2026-10-10
+
+METHODOLOGY.md said the babble was mixed at 10 dB or 5 dB, but
+`scripts/eval_wer.py` and the README table also have a 15 dB condition.
+Added 15 dB to the sentence. No number changes.
