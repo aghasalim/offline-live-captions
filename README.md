@@ -64,6 +64,10 @@ up, for different maximum chunk lengths.
 Median / 90th percentile end-of-speech to caption latency in seconds, 60 utterances per cell. Includes the 0.4 s pause the chunker waits for.
 <!-- /table -->
 
+![caption latency vs chunk size](results/latency_vs_chunk.png)
+
+Median latency per model as the maximum chunk length changes. The lines are nearly flat.
+
 With the default 4 s chunk, the small model shows the final words of a
 sentence a median latency of **0.76 s** after the speaker stops, and
 large-v3-turbo a median latency of **1.69 s**. In a conversation that's a
@@ -76,6 +80,10 @@ That's because the last words of a sentence usually land in a short leftover
 chunk after the previous cut. So the chunk length mostly changes how often
 captions pop up mid-sentence, and it hardly affects how late the last word
 arrives.
+
+![word error rate vs caption latency](results/wer_vs_latency.png)
+
+Each model's WER (clean and room at 10 dB) against its median latency with the 4 s chunk. Small sits at the bend.
 
 I also looked at word error rate by self-reported accent on the
 `DTU54DL/common-accent` test split. These are crowd-recorded Common Voice
@@ -96,8 +104,13 @@ India and South Asia is the only group with enough clips to mean much, and
 there the small model is at **17.3%**. The other groups only have 11 to 23
 clips each, so I'd treat their numbers as rough.
 
+![word error rate by accent](results/wer_by_accent.png)
+
+WER per accent group and model, with the clip count under each group.
+
 Figures: `results/wer_vs_model.png`, `results/latency_vs_chunk.png`,
-`results/rtf_per_model.png`, `results/wer_by_accent.png`.
+`results/rtf_per_model.png`, `results/wer_by_accent.png`,
+`results/wer_vs_latency.png`.
 
 ## Limitations
 
