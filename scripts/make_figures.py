@@ -50,18 +50,37 @@ fig.tight_layout()
 fig.savefig(R / "latency_vs_chunk.png", dpi=150)
 
 acc = defaultdict(dict)
+nclips = {}
 for r in csv.DictReader((R / "accent_summary.csv").open()):
     acc[r["accent"]][r["model"]] = float(r["wer"])
+    nclips[r["accent"]] = int(r["n"])
 if acc:
-    groups = [g for g in acc if g != "all"]
+    groups = sorted((g for g in acc if g != "all"), key=lambda g: -nclips[g])
     fig, ax = plt.subplots(figsize=(8, 4))
     xg = np.arange(len(groups))
     for i, m in enumerate(models):
         ax.bar(xg + (i - 1.5) * 0.2, [100 * acc[g][m] for g in groups], 0.2, label=m)
-    ax.set_xticks(xg, groups, rotation=15, ha="right")
+    ax.set_xticks(xg, [f"{g}\n({nclips[g]} clips)" for g in groups])
     ax.set_ylabel("word error rate (%)")
     ax.set_title("WER by self-reported accent (Common Voice clips)")
-    ax.legend()
+    ax.set_ylim(0, 55)
+    ax.legend(ncol=4, loc="upper center", frameon=False)
     fig.tight_layout()
     fig.savefig(R / "wer_by_accent.png", dpi=150)
+# accuracy vs speed: each model's WER against its median caption latency at the default 4 s chunk
+if (models[0], 4.0) in lat:
+    fig, ax = plt.subplots(figsize=(7, 4))
+    for c, label, mk in [("clean", "clean", "o"), ("room_snr10", "room, babble 10 dB", "s")]:
+        xs = [np.median(lat[(m, 4.0)]) for m in models]
+        ys = [100 * float(w[(m, c)]["wer"]) for m in models]
+        ax.plot(xs, ys, marker=mk, ls=":", label=label)
+        for m, xv, yv in zip(models, xs, ys):
+            ax.annotate(m, (xv, yv), textcoords="offset points", xytext=(6, 4), fontsize=9)
+    ax.set_xlabel("median end-of-speech to caption latency, 4 s chunk (s)")
+    ax.set_ylabel("word error rate (%)")
+    ax.set_ylim(bottom=0)
+    ax.set_title("Accuracy vs caption delay per model (Apple M4)")
+    ax.legend()
+    fig.tight_layout()
+    fig.savefig(R / "wer_vs_latency.png", dpi=150)
 print("figures written")
