@@ -1,5 +1,3 @@
-<p align="center"><img src="assets/banner.jpg" alt="Line drawing of a sound wave entering a laptop and leaving as caption bars, with a crossed out cloud above" width="100%"></p>
-
 # Offline live captions
 
 This is a live captioning tool that runs fully on my laptop. I measured the
