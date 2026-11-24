@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/banner.jpg" alt="Line drawing of a sound wave entering a laptop and leaving as caption bars, with a crossed out cloud above" width="100%"></p>
+
 # Offline live captions
 
 This is a live captioning tool that runs fully on my laptop. I measured the
@@ -5,6 +7,18 @@ word error rate and latency on my own machine, because I didn't want to just
 copy numbers from a model card.
 
 ![captions web page](results/captions_page.png)
+
+<details>
+<summary>Contents</summary>
+
+- [Why](#why)
+- [Results (Apple M4, 24 GB, mlx-whisper 0.4.3, greedy decoding)](#results-apple-m4-24-gb-mlx-whisper-043-greedy-decoding)
+- [Limitations](#limitations)
+- [Run it](#run-it)
+- [Privacy, checkable](#privacy-checkable)
+- [Layout](#layout)
+
+</details>
 
 ## Why
 
